@@ -1,5 +1,3 @@
-// const pokemonName = document.getElementById("pokemonName").value.toLowerCase();
-
 async function fetchData(){
     try{
         const response = await fetch(`https://fakestoreapi.com/products`);
@@ -44,21 +42,17 @@ async function searchData(keys){
     }
 }
 
-const cardContainer = document.getElementById("card-container");
 
+const cardContainer = document.getElementById("card-container");
 // all cards
 async function displayCards(type) {
      cardContainer.innerHTML = "";
-     cardContainer.innerHTML = '<div class="col-span-full text-center py-10 text-xl text-body">Loading products...</div>';
-     
+     cardContainer.innerHTML = '<div class="col-span-full text-center py-10 text-xl text-body">Loading products</div>';
      let products = "";
-     if (type == "all") {
-        products = await fetchData();
-     }
+     if (type == "all")
+        products = await fetchData();     
      else
-     {
         products = await  filterData(type);
-     }
 
      cardContainer.innerHTML = "";
      if (products.length === 0) {
